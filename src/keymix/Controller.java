@@ -1,4 +1,4 @@
-package sample;
+package keymix;
 
 public class Controller {
 }
