@@ -25,8 +25,6 @@ public class Play extends Application{
     public void start(Stage primaryStage){
         primaryStage.setTitle("Play!");
 
-        String musicURL = "C:\\Users\\Caleb\\Music\\I Smoke Weed - Chrome.mp3";     // For example
-        String musicFile = new File(musicURL).toURI().toString();
         String musicFile2 = new File("certifiedgz.mp3").toURI().toString();
 
         AudioClip kick1 = new AudioClip(new File("AnantSahai.wav").toURI().toString());
@@ -39,8 +37,6 @@ public class Play extends Application{
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         */
-        AudioClip weed = new AudioClip(musicFile);
-        AudioClip gz = new AudioClip(musicFile2);
 
         TextArea txt = new TextArea();
         txt.setWrapText(true);
