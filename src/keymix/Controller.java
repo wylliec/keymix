@@ -1,16 +1,10 @@
 package keymix;
 
 public class Controller {
-    // hashmap: {keycode: null OR Sound object (?)}
-    //
-
-
-    public Controller {
-        //
-
-    }
-
-
-
+    // press hashmap: {KeyCode code: boolean keyDown}
+    // sound hashmap: {KeyCode code: Sound sound}
+//    public Controller {
+//
+//    }
 
 }
