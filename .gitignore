@@ -12,7 +12,9 @@
 hs_err_pid*
 
 # IntelliJ
-#.idea/
+.idea/
+!.idea/modules.xml
+!.idea/misc.xml
 out/
 #*.iml
 *.iws
