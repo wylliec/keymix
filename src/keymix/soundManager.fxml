@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+        <VBox layoutX="14.0" layoutY="14.0" prefHeight="386.0" prefWidth="612.0">
+          <children>
+            <VBox prefHeight="76.00010681152344" prefWidth="612.0">
+              <children>
+                <Label prefWidth="611.9999000000025" text="sound manager.">
+                  <font>
+                    <Font name="System Bold" size="36.0" />
+                  </font>
+                </Label>
+                <Label text="choose sound files and map to keys">
+                  <font>
+                    <Font size="20.0" />
+                  </font>
+                </Label>
+              </children>
+              <padding>
+                <Insets left="8.0" />
+              </padding>
+            </VBox>
+            <SplitPane dividerPositions="0.3" focusTraversable="true" prefHeight="258.0" prefWidth="612.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="229.0">
+                  <children>
+                    <ListView layoutX="0.0" layoutY="0.0" prefHeight="267.0" prefWidth="180.0" />
+                  </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="424.0">
+                  <children>
+                    <ListView layoutX="0.0" layoutY="0.0" prefHeight="256.0" prefWidth="424.0" />
+                  </children>
+                  <padding>
+                    <Insets />
+                  </padding>
+                </AnchorPane>
+              </items>
+              <VBox.margin>
+                <Insets top="10.0" />
+              </VBox.margin>
+            </SplitPane>
+            <HBox alignment="BOTTOM_CENTER" minHeight="14.0" prefHeight="41.0" prefWidth="612.0">
+              <children>
+                <AnchorPane prefHeight="27.0" prefWidth="371.0">
+                  <children>
+                    <Button layoutX="45.0" layoutY="3.0" mnemonicParsing="false" prefWidth="100.0" text="Load Sounds" />
+                  </children>
+                  <HBox.margin>
+                    <Insets top="5.0" fx:id="x1" />
+                  </HBox.margin>
+                </AnchorPane>
+                <AnchorPane prefHeight="36.0" prefWidth="315.0" HBox.margin="$x1">
+                  <children>
+                    <Button layoutX="0.0" layoutY="3.0" mnemonicParsing="false" text="Apply Mappings" />
+                    <Button layoutX="222.0" layoutY="4.0" mnemonicParsing="false" text="Cancel" />
+                  </children>
+                </AnchorPane>
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
