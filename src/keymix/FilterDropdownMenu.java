@@ -15,11 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import java.awt.Insets;
 import javafx.scene.Group;
 
 /**
@@ -35,18 +33,11 @@ public class FilterDropdownMenu extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        final List<String> items = Arrays.asList(new String[] { "Alabama",
-                "Alaska", "Arizona", "Arkansas", "California", "Colorado",
-                "Connecticut", "Delaware", "Georgia", "Florida", "Hawaii", "Idaho",
-                "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
-                "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
-                "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
-                "New Hampshire", "New Jersey", "New Mexico", "New York",
-                "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon",
-                "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
-                "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
-                "West Virginia", "Wisconsin", "Wyoming" });
-        // final BorderPane root = new BorderPane();
+        /* List contains all files to be selected from. */
+        final List<String> items = Arrays.asList(new String[] {
+                // Strings of file names.
+        });
+
         final ComboBox<String> comboBox = new ComboBox<>(
                 FXCollections.observableArrayList(items));
 
@@ -54,8 +45,6 @@ public class FilterDropdownMenu extends Application {
 
         comboBox.setEditable(true);
 
-        comboBox.setPromptText("File name");
-        comboBox.setEditable(true);
         comboBox.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String t, String t1) {
@@ -93,8 +82,7 @@ public class FilterDropdownMenu extends Application {
                                 final String current = editor.getText();
                                 if (onlyOption.length() > current.length()) {
                                     editor.setText(onlyOption);
-                                    // Not quite sure why this only works using
-                                    // Platform.runLater(...)
+                                    // This only works using Platform.runLater(...)
                                     Platform.runLater(new Runnable() {
                                         @Override
                                         public void run() {
@@ -106,6 +94,14 @@ public class FilterDropdownMenu extends Application {
                         }
                     }
                 });
+/**************************************************************************************
+ *  The commented-out code is an attempt to revert to the full list on a selection being made.
+ *  It seems to make this work we need to delay the processing until after the default handlers have been invoked;
+ *  hence the Platform.runLater(...).
+ *  May not be desirable from a usability standpoint anyway.
+ *  Scrolling is affected with this enabled; if you type and then use the arrow keys for selection, it will not
+ *  scroll to the selected item on the first press of the arrow keys.
+
 //    comboBox.setOnAction(new EventHandler<ActionEvent>() {
 //      @Override
 //      public void handle(ActionEvent event) {
@@ -127,30 +123,18 @@ public class FilterDropdownMenu extends Application {
 //      }
 //    });
 
+**************************************************************************************/
+
         GridPane grid = new GridPane();
         grid.setVgap(4);
         grid.setHgap(10);
-        // grid.setPadding(new Insets(5, 5, 5, 5));
-        // grid.add(new Label("File: "), 0, 0);
         grid.add(comboBox, 1, 0);
         grid.add(button, 0, 3);
         grid.add (notification, 1, 3, 3, 1);
 
         primaryStage.setTitle("File Selector");
 
-        // root.setTop(comboBox);
-        // Label label = new Label();
-        // label.textProperty().bind(
-        //        comboBox.getSelectionModel().selectedItemProperty());
-        // root.setBottom(label);
-        // Scene scene = new Scene(root, 200, 400);
         Scene scene = new Scene(new Group(), 450, 250);
-
-
-        // root.getChildren().add(grid);
-
-        // primaryStage.setScene(scene);
-        // primaryStage.show();
 
         Group root = (Group)scene.getRoot();
         root.getChildren().add(grid);
