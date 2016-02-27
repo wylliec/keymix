@@ -1,6 +1,5 @@
-/**
- * Dropdown menu for all different files user can select from.
- */
+package keymix;
+
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -12,6 +11,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import java.io.File;
+
+/**
+ * Dropdown menu for all different files user can select from.
+ * User should be able to type into menu and see only files that begin with the input text:
+ *      NOT case-sensitive.
+ *      If multiple options exist, user should be able to use arrow keys to shift between options.
+ * Optimization:
+ *      Autocomplete functionality.
+ */
 
 public class Dropdown extends Application {
 
@@ -21,9 +30,19 @@ public class Dropdown extends Application {
 
     final Button button = new Button("Select");
     final Label notification = new Label();
-    // final TextArea text = new TextArea("");
+    final ExtensionChecker checker = new ExtensionChecker();
 
     String address = " ";
+
+    private void addFile(String filepath, ComboBox cb, ExtensionChecker ec) {
+        File file = new File(filepath);
+        String fileName = file.getName();
+        if (ec.checkExtension(fileName)) {
+            cb.getItems().addAll(fileName);
+        } else {
+            System.out.println("Invalid file!");
+        }
+    }
 
     @Override
     public void start(Stage stage) {
@@ -32,12 +51,16 @@ public class Dropdown extends Application {
 
         final ComboBox fileComboBox = new ComboBox();
 
-        /* Adds sequence of comma separated strings containing the names of all the files
-         * the user can select from.
-         */
-        fileComboBox.getItems().addAll(
-            "j.java" // TODO: CHANGE GENERIC FILE NAME - ADD VALID FILES
-        );
+//        /* Adds sequence of comma separated strings containing the names of all the files
+//         * the user can select from.
+//         */
+//        fileComboBox.getItems().addAll(
+//            "j.java" // TODO: CHANGE GENERIC FILE NAME - ADD VALID FILES
+//        );
+
+        String filepath = "j.java";
+
+        addFile(filepath, fileComboBox, checker);
 
         fileComboBox.setPromptText("File name");
         fileComboBox.setEditable(true);
@@ -55,7 +78,6 @@ public class Dropdown extends Application {
                         !fileComboBox.getValue().toString().isEmpty()){
                     notification.setText("File selected: " + fileComboBox.getValue());
                     fileComboBox.setValue(null);
-                    // text.clear();
                 }
                 else {
                     notification.setText("You have not selected a file!");
@@ -69,7 +91,6 @@ public class Dropdown extends Application {
         grid.setPadding(new Insets(5, 5, 5, 5));
         grid.add(new Label("File: "), 0, 0);
         grid.add(fileComboBox, 1, 0);
-        // grid.add(text, 0, 2, 4, 1);
         grid.add(button, 0, 3);
         grid.add (notification, 1, 3, 3, 1);
 
