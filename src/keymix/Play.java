@@ -25,22 +25,11 @@ public class Play extends Application{
     public void start(Stage primaryStage){
         primaryStage.setTitle("Play!");
 
-        String musicURL = "C:\\Users\\Caleb\\Music\\I Smoke Weed - Chrome.mp3";     // For example
-        String musicFile = new File(musicURL).toURI().toString();
-        String musicFile2 = new File("certifiedgz.mp3").toURI().toString();
-
-        AudioClip kick1 = new AudioClip(new File("AnantSahai.wav").toURI().toString());
-        AudioClip kick2 = new AudioClip(new File("EECSforLifeYO.wav").toURI().toString());
-        AudioClip kick3 = new AudioClip(new File("ImBetterThanYou.wav").toURI().toString());
-        AudioClip kick4 = new AudioClip(new File("PaulHilfinger.wav").toURI().toString());
-        AudioClip kick5 = new AudioClip(new File("SixFigsRespeck.wav").toURI().toString());
-        /*
-        Media sound = new Media(musicFile);
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        */
-        AudioClip weed = new AudioClip(musicFile);
-        AudioClip gz = new AudioClip(musicFile2);
+        AudioClip kick1 = new AudioClip(new File("samples\\AnantSahai.wav").toURI().toString());
+        AudioClip kick2 = new AudioClip(new File("samples\\EECSforLifeYO.wav").toURI().toString());
+        AudioClip kick3 = new AudioClip(new File("samples\\ImBetterThanYou.wav").toURI().toString());
+        AudioClip kick4 = new AudioClip(new File("samples\\PaulHilfinger.wav").toURI().toString());
+        AudioClip kick5 = new AudioClip(new File("samples\\SixFigsRespeck.wav").toURI().toString());
 
         TextArea txt = new TextArea();
         txt.setWrapText(true);
@@ -63,6 +52,14 @@ public class Play extends Application{
             }
             if (keyEvent.getCode() == KeyCode.B) {
                 kick5.play();
+                keyEvent.consume();
+            }
+            if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
+                kick1.stop();
+                kick2.stop();
+                kick3.stop();
+                kick4.stop();
+                kick5.stop();
                 keyEvent.consume();
             }
         });
