@@ -12,7 +12,7 @@
 hs_err_pid*
 
 # IntelliJ
-.idea/
+#.idea/
 out/
-*.iml
+#*.iml
 *.iws
