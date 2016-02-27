@@ -1,0 +1,43 @@
+root {
+    display: block;
+}
+
+.root {
+    -fx-background-color: linear-gradient(#EEEEEE, #B6B6B6);
+}
+
+.label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #003262;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+#title {
+    -fx-font-size: 36px;
+    -fx-font-family: "HP Simplified";
+    -fx-font-weight: bold;
+    -fx-fill: #818181;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+#phrase {
+    -fx-font-size: 24px;
+    -fx-font-family: "HP Simplified";
+    -fx-font-weight: normal;
+    -fx-fill: #818181;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+.button {
+    -fx-padding: 5px 5px 5px 5px;
+    -fx-margin: 5px 5px 5px 5px;
+    -fx-text-fill: #EEEEEE;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#3B7EA1, #003262);
+}
+
+.button:pressed, .button.pressed {
+    -fx-background-color: linear-gradient(#003262, #3B7EA1);
+}

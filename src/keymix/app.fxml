@@ -2,72 +2,28 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-  <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-        <VBox layoutX="14.0" layoutY="14.0" prefHeight="348.0" prefWidth="612.0">
-          <children>
-            <VBox prefHeight="150.0" prefWidth="612.0">
-              <children>
-                <Label prefWidth="612.0" text="keymix.">
+        <VBox layoutX="14.0" layoutY="14.0" prefHeight="372.0" prefWidth="612.0" spacing="3.0">
+            <VBox prefHeight="170.0" prefWidth="612.0">
+                <Label id="title" prefWidth="612.0" text="keymix.">
                   <font>
-                    <Font name="System Bold" size="36.0" />
+                    <Font name="HP Simplified Bold" size="36.0" />
                   </font>
                 </Label>
-                <Label text="get on board">
+                <Label id="phrase" text="get on board">
                   <font>
-                    <Font size="20.0" />
+                    <Font name="HP Simplified" size="20.0" />
                   </font>
                 </Label>
-              </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-              <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="`" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="1" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="2" />
@@ -82,11 +38,9 @@
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="=" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="backspace" />
-              </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-              <children>
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="tab" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
+                <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="65.0" text="tab" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Q" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="W" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="E" />
@@ -100,10 +54,8 @@
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="[" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="]" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="\\" />
-              </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-              <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="caps" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="A" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="S" />
@@ -117,10 +69,8 @@
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text=";" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="'" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="enter" />
-              </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-              <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="104.0" text="shift" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Z" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="X" />
@@ -133,39 +83,35 @@
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="." />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="/" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="94.0" text="shift" />
-              </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-              <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" text="cmd" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="228.0" text="" />
+                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="277.9999000000025" text="" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&lt;" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="^" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="v" />
                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&gt;" />
-              </children>
             </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
             <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
-              <children>
-                <VBox alignment="BOTTOM_LEFT" prefHeight="43.0" prefWidth="300.0">
-                  <children>
-                    <Button alignment="CENTER" mnemonicParsing="false" text="Load Files..." />
-                  </children>
+                <HBox alignment="BOTTOM_LEFT" prefHeight="43.0" prefWidth="320.0">
+                    <Button alignment="CENTER" mnemonicParsing="false" text="Sound Manager">
+                      <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+                      </HBox.margin>
+                    </Button>
+                    <Button mnemonicParsing="false" text="Map Manager" HBox.margin="$x1" />
+                  <HBox.margin>
+                    <Insets />
+                  </HBox.margin>
+                </HBox>
+                <VBox alignment="BOTTOM_RIGHT" prefHeight="43.0" prefWidth="320.0">
+                    <Button mnemonicParsing="false" text="Play ▶" VBox.margin="$x1" />
                 </VBox>
-                <VBox alignment="BOTTOM_RIGHT" prefHeight="43.0" prefWidth="300.0">
-                  <children>
-                    <Button mnemonicParsing="false" text="▶" />
-                  </children>
-                </VBox>
-              </children>
             </HBox>
-          </children>
         </VBox>
-      </children>
     </AnchorPane>
-  </children>
 </VBox>

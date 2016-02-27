@@ -12,7 +12,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("app.fxml"));
         primaryStage.setTitle("keymix.");
-        primaryStage.setScene(new Scene(root, 640, 400));
+        Scene scene = new Scene(root, 640, 400);
+        primaryStage.setScene(scene);
+        scene.getStylesheets().add(Main.class.getResource("app.css").toExternalForm());
         primaryStage.show();
     }
 
