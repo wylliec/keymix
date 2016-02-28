@@ -22,7 +22,7 @@ public class SoundMap extends MapOptimization {
 
     /* Filepaths for all sound bytes to be available. */
     String[] filepaths = new String[]{
-            // Insert filepaths as Strings
+        // Insert filepaths as Strings
     };
 
     /* Given a filepath as a String, return the name of the file. */
@@ -44,5 +44,4 @@ public class SoundMap extends MapOptimization {
         sounds = assignHotKey();
         assignName();
     }
-
 }
