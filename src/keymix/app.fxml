@@ -91,9 +91,11 @@
         <Button id="v" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="v" />
         <Button id="&gt;" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&gt;" />
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <Text id="message" fx:id="message" />
+      </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10">
-        <Button mnemonicParsing="false" text="Import Samples" fx:id="importFile" onAction="#importFiles"/>
+        <Button mnemonicParsing="false" text="Import Samples" onAction="#importFiles"/>
         <Button mnemonicParsing="false" text="Remove Samples" onAction="#removeFiles" />
         <Button mnemonicParsing="false" text="Save Keymap" onAction="#saveKeymap" />
         <Button mnemonicParsing="false" text="Import Keymap" onAction="#importKeymap" />

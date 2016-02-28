@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -19,7 +20,7 @@ public class Controller {
 
     private final String DEFAULT_OPTION = "Select an option.";
 
-    @FXML private Button importFile;
+    @FXML private Text message;
 
     @FXML protected void keyPress(KeyEvent keyEvent) {
         String id = keyEvent.getText().toUpperCase();
@@ -27,9 +28,9 @@ public class Controller {
         try {
             int mapNum = Integer.parseInt(id);
             if(mapNum >=0 && mapNum < 10) {
-                importFile.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
+                message.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
                 myMap = mapNum;
-                importFile.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
+                message.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
             }
         } catch(NumberFormatException nfe) { }
 
@@ -41,7 +42,7 @@ public class Controller {
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
                 && maps[myMap].containsKey(keyEvent.getCode()) && !maps[myMap].get(keyEvent.getCode()).isPlaying()) {
             maps[myMap].get(keyEvent.getCode()).setPlaying(true);
-            importFile.getScene().lookup("#" + id).getStyleClass().add("pressed");
+            message.getScene().lookup("#" + id).getStyleClass().add("pressed");
             maps[myMap].get(keyEvent.getCode()).getClip().play();
         }
         keyEvent.consume();
@@ -54,7 +55,7 @@ public class Controller {
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
                 && maps[myMap].containsKey(keyEvent.getCode())) {
             maps[myMap].get(keyEvent.getCode()).setPlaying(false);
-            importFile.getScene().lookup("#" + id).getStyleClass().remove("pressed");
+            message.getScene().lookup("#" + id).getStyleClass().remove("pressed");
         }
         keyEvent.consume();
     }
@@ -64,7 +65,7 @@ public class Controller {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.midi");
         fileChooser.getExtensionFilters().add(extFilter);
 
-        List<File> files = fileChooser.showOpenMultipleDialog(importFile.getScene().getWindow());
+        List<File> files = fileChooser.showOpenMultipleDialog(message.getScene().getWindow());
         if(files != null) {
             importedSounds.addAll(files);
         }
@@ -83,10 +84,10 @@ public class Controller {
     }
 
     @FXML protected void clickNumber(ActionEvent event) {
-        importFile.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
+        message.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
         String id = ((Node)event.getTarget()).idProperty().getValue();
         myMap = id.charAt(0) - '0';
-        importFile.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
+        message.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
         event.consume();
     }
 
@@ -128,7 +129,9 @@ public class Controller {
             s.writeObject((TreeSet) importedSounds);
             s.close();
             f.close();
+            message.setText("Keymap saved.");
         } catch (IOException err) {
+            message.setText("Could not save keymap.");
             err.printStackTrace();
         }
 
@@ -147,10 +150,9 @@ public class Controller {
             importedSounds = (TreeSet) s.readObject();
             s.close();
             f.close();
-        } catch (IOException err) {
-
-        } catch (ClassNotFoundException err) {
-            err.printStackTrace();
+            message.setText("Keymap loaded.");
+        } catch (IOException|ClassNotFoundException err) {
+            message.setText("Could not load keymap.");
         }
 
         event.consume();

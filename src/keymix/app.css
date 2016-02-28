@@ -28,6 +28,10 @@ root {
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
 
+#message {
+    -fx-font-size: 16px;
+}
+
 .button {
     -fx-padding: 5px 5px 5px 5px;
     -fx-margin: 5px 5px 5px 5px;
