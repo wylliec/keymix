@@ -21,6 +21,8 @@ public class Controller {
     private boolean[] presses = new boolean[26];
     private int myMap = 0;
 
+    private final String DEFAULT_OPTION = "Select an option.";
+
     @FXML private Button importFile;
 
     @FXML protected void keyPress(KeyEvent keyEvent) {
@@ -64,7 +66,7 @@ public class Controller {
     }
 
     @FXML protected void removeFiles(ActionEvent event) {
-        ChoiceDialog<File> dialog = new ChoiceDialog<>(new File("Select an option."), importedSounds);
+        ChoiceDialog<File> dialog = new ChoiceDialog<>(new File(DEFAULT_OPTION), importedSounds);
         dialog.setTitle("Delete Sample");
         dialog.setHeaderText("Choose what sample you would like delete");
         dialog.setContentText("Sample:");
@@ -84,7 +86,7 @@ public class Controller {
     @FXML protected void clickLetter(ActionEvent event) {
         String id = ((Node)event.getTarget()).idProperty().getValue();
 
-        ChoiceDialog<File> dialog = new ChoiceDialog<>(new File("Select an option."), importedSounds);
+        ChoiceDialog<File> dialog = new ChoiceDialog<>(new File(DEFAULT_OPTION), importedSounds);
         dialog.setTitle("Choose Sample");
         dialog.setHeaderText("Choose what sample you would like to map to letter " + id);
         dialog.setContentText("Sample:");
@@ -96,10 +98,16 @@ public class Controller {
     }
 
     private void mapKey(File file, String id) {
-        if(maps[myMap] == null) {
-            maps[myMap] = new HashMap<>();
+        if (!file.toString().equals(DEFAULT_OPTION)) {
+            if (maps[myMap] == null) {
+                maps[myMap] = new HashMap<>();
+            }
+            maps[myMap].put(KeyCode.valueOf(id), new AudioClip(file.toURI().toString()));
+        } else {
+            if (maps[myMap] != null) {
+                maps[myMap].remove(KeyCode.valueOf(id));
+            }
         }
-        maps[myMap].put(KeyCode.valueOf(id), new AudioClip(file.toURI().toString()));
     }
 
     @FXML protected void saveKeymap(ActionEvent event) {
