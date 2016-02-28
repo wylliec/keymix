@@ -33,8 +33,8 @@ root {
     -fx-padding: 5px 5px 5px 5px;
     -fx-margin: 5px 5px 5px 5px;
     -fx-text-fill: #EEEEEE;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-weight: bold;
+    -fx-font-family: "HP Simplified";
+    -fx-font-weight: normal;
     -fx-background-color: linear-gradient(#3B7EA1, #003262);
 }
 
