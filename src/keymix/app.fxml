@@ -33,7 +33,7 @@
         <Button id="0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="0" onAction="#clickNumber" />
         <Button id="-" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" />
         <Button id="=" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="=" />
-        <Button id="backspace" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="backspace" />
+        <Button id="backspace" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="STOP" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
         <Button id="tab" mnemonicParsing="false" prefHeight="36.0" prefWidth="65.0" text="tab" />
