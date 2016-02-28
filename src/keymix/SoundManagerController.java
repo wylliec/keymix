@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
@@ -34,7 +35,8 @@ public class SoundManagerController implements Initializable {
     @FXML private TableView<SoundFileWithName> soundFilesTableView = new TableView<>();
     @FXML private TableColumn soundNameCol = new TableColumn("sound name");
     @FXML private TableColumn soundFilePathCol = new TableColumn("sound file path");
-    @FXML private Button btnLoadSounds;
+    @FXML private Button loadSoundsButton;
+    @FXML private Button returnButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -97,7 +99,7 @@ public class SoundManagerController implements Initializable {
         );
 
         // lets user pick file(s)
-        List<File> fileList = fileChooser.showOpenMultipleDialog(btnLoadSounds.getScene().getWindow());
+        List<File> fileList = fileChooser.showOpenMultipleDialog(loadSoundsButton.getScene().getWindow());
 
         if (fileList != null) {
             for (File f : fileList) {
@@ -156,8 +158,10 @@ public class SoundManagerController implements Initializable {
         }
     }
 
+    // closes current window
     @FXML protected void handleReturnButtonAction(ActionEvent e) {
-        // TODO: implement returning to original screen
+        Stage stage = (Stage) returnButton.getScene().getWindow();
+        stage.close();
     }
 
 
