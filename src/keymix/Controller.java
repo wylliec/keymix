@@ -7,18 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.media.AudioClip;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.*;
 
 public class Controller {
     private Set<File> importedSounds = new TreeSet<>();
-    private Map<KeyCode, AudioClip>[] maps = new Map[10];
-    private boolean[] presses = new boolean[26];
+    private Map<KeyCode, Sample>[] maps = new Map[10];
     private int myMap = 0;
 
     private final String DEFAULT_OPTION = "Select an option.";
@@ -30,14 +26,14 @@ public class Controller {
 
         if (maps[myMap] != null && (keyEvent.getCode() == KeyCode.BACK_SPACE ||
                 keyEvent.getCode() == KeyCode.SPACE)) {
-            maps[myMap].values().stream().forEach(clip -> clip.stop());
+            maps[myMap].values().stream().forEach(sample -> sample.getClip().stop());
         }
 
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
-                && maps[myMap].containsKey(keyEvent.getCode()) && !presses[id.charAt(0) - 'A']) {
-            presses[id.charAt(0) - 'A'] = true;
+                && maps[myMap].containsKey(keyEvent.getCode()) && !maps[myMap].get(keyEvent.getCode()).isPlaying()) {
+            maps[myMap].get(keyEvent.getCode()).setPlaying(true);
             importFile.getScene().lookup("#" + id).getStyleClass().add("pressed");
-            maps[myMap].get(keyEvent.getCode()).play();
+            maps[myMap].get(keyEvent.getCode()).getClip().play();
         }
         keyEvent.consume();
     }
@@ -48,7 +44,7 @@ public class Controller {
         //System.out.println(id);
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
                 && maps[myMap].containsKey(keyEvent.getCode())) {
-            presses[id.charAt(0) - 'A'] = false;
+            maps[myMap].get(keyEvent.getCode()).setPlaying(false);
             importFile.getScene().lookup("#" + id).getStyleClass().remove("pressed");
         }
         keyEvent.consume();
@@ -102,7 +98,7 @@ public class Controller {
             if (maps[myMap] == null) {
                 maps[myMap] = new HashMap<>();
             }
-            maps[myMap].put(KeyCode.valueOf(id), new AudioClip(file.toURI().toString()));
+            maps[myMap].put(KeyCode.valueOf(id), new Sample(file.toURI().toString()));
         } else {
             if (maps[myMap] != null) {
                 maps[myMap].remove(KeyCode.valueOf(id));
@@ -111,16 +107,40 @@ public class Controller {
     }
 
     @FXML protected void saveKeymap(ActionEvent event) {
-//        File file = new File("temp");
-//        FileOutputStream f = new FileOutputStream(file);
-//        ObjectOutputStream s = new ObjectOutputStream(f);
-//        s.writeObject(fileObj);
-//        s.close();
+        try {
+            File file = new File("keymap.ser");
+            FileOutputStream f = new FileOutputStream(file);
+            ObjectOutputStream s = new ObjectOutputStream(f);
+            for(Map<KeyCode, Sample> m : maps) {
+                s.writeObject((HashMap) m);
+            }
+            s.writeObject((TreeSet) importedSounds);
+            s.close();
+            f.close();
+        } catch (IOException err) {
+            err.printStackTrace();
+        }
 
         event.consume();
     }
 
     @FXML protected void importKeymap(ActionEvent event) {
+        try {
+            File file = new File("keymap.ser");
+            FileInputStream f = new FileInputStream(file);
+            ObjectInputStream s = new ObjectInputStream(f);
+            maps = new Map[10];
+            for (int i = 0; i < maps.length; i++) {
+                maps[i] = (HashMap<KeyCode, Sample>) s.readObject();
+            }
+            importedSounds = (TreeSet) s.readObject();
+            s.close();
+            f.close();
+        } catch (IOException err) {
+            err.printStackTrace();
+        } catch (ClassNotFoundException err) {
+            err.printStackTrace();
+        }
 
         event.consume();
     }
