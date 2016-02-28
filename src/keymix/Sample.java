@@ -44,7 +44,6 @@ public class Sample implements Serializable{
         Sample sample = (Sample) o;
 
         return URI.equals(sample.URI);
-
     }
 
     @Override

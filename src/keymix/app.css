@@ -30,6 +30,7 @@ root {
 
 #message {
     -fx-font-size: 16px;
+    max-width: 600px;
 }
 
 .button {
@@ -41,7 +42,18 @@ root {
     -fx-background-color: linear-gradient(#3B7EA1, #003262);
 }
 
+.button.mapped {
+    -fx-background-color: linear-gradient(#003262, #3B7EA1);
+}
+
+.num > .button {
+    -fx-background-color: linear-gradient(#003262, #3B7EA1);
+}
+
 .button:pressed, .button.pressed {
-    /*-fx-background-color: linear-gradient(#003262, #3B7EA1);*/
     -fx-background-color: green;
+}
+
+.num > .button:pressed, .num > .button.pressed {
+     -fx-background-color: red;
 }
