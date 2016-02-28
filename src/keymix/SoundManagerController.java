@@ -6,7 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -15,9 +19,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.security.Key;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -28,8 +35,13 @@ import java.util.ResourceBundle;
  * Controller for SoundManager window
  */
 public class SoundManagerController implements Initializable {
+    // TODO: PRESERVE MAPPINGS BETWEEN CONTROLLERS
+
+    private MainController main;
+    private KeymixAppController parentController;
+    private ImportedSoundManager soundFilesMap = ImportedSoundManager.getInstance();
+
     @FXML private ObservableList<SoundFileWithName> soundFilesTabData = FXCollections.observableArrayList();
-    @FXML private HashMap<String, String> soundFilesMap = new HashMap<>();
 
     // JavaFX objects
     @FXML private TableView<SoundFileWithName> soundFilesTableView = new TableView<>();
@@ -40,6 +52,18 @@ public class SoundManagerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        // initializes soundFilesMap
+        for (String key : soundFilesMap.getMap().keySet()) {
+            String name = key;
+            String path = soundFilesMap.get(key);
+
+            soundFilesTabData.add(new SoundFileWithName(name, path));
+        }
+
+        // TODO: set up listener for changes
+        soundFilesTableView.setItems(soundFilesTabData);
+
         // sets up cell value factories for soundFilesTableView columns
         soundNameCol.setCellValueFactory(new PropertyValueFactory<SoundFileWithName, String>("soundName"));
         soundFilePathCol.setCellValueFactory(new PropertyValueFactory<SoundFileWithName,String>("soundPath"));
@@ -67,7 +91,7 @@ public class SoundManagerController implements Initializable {
                         //      - existingPath is null
                         // if either is false, then the user is trying to add a sound file under a duplicate name
                         // and this alerts the user of error
-                        if (!soundFilesMap.isEmpty() && existingPath != null) {
+                        if (!soundFilesMap.getMap().isEmpty() && existingPath != null) {
                             errorAlert("Duplicate Name Error",
                                        "You tried to change a sound's name to a name that already existed!" +
                                        "\n\nPlease try again with a new name.");
@@ -79,12 +103,16 @@ public class SoundManagerController implements Initializable {
                             soundFile.setSoundName(newName);
 
                             // updates hash map of sound file names and paths
-                            soundFilesMap.remove(oldName);
+                            soundFilesMap.getMap().remove(oldName);
                             soundFilesMap.put(newName, currPath);
                         }
                     }// end of handle method
                 }
         );
+    }
+
+    public void init(MainController mainController) {
+        main = mainController;
     }
 
     // loads sounds into SoundManager window into a table
@@ -118,7 +146,7 @@ public class SoundManagerController implements Initializable {
                 //      - existingPath is null
                 // if either is false, then the user is trying to add a sound file under a duplicate name
                 // and this alerts the user of error
-                if (!soundFilesMap.isEmpty() && existingPath != null) {
+                if (!soundFilesMap.getMap().isEmpty() && existingPath != null) {
                     errorAlert("Duplicate Name Error",
                                "You tried adding a sound file under a sound file name that already existed!" +
                                "\n\nPlease try again with a new name.");
@@ -132,7 +160,11 @@ public class SoundManagerController implements Initializable {
 
                 // otherwise, adds the new sound file
                 else {
-                    addSoundFile(name, path);
+                    // adds fileList to soundFiles with file name as key, full path as value
+                    soundFilesMap.put(name, path);
+
+                    // adds new SoundFileWithName
+                    soundFilesTabData.add(new SoundFileWithName(name, path));
                 }
             }// end of for-loop
         }
@@ -154,28 +186,51 @@ public class SoundManagerController implements Initializable {
             soundFilesTabData.remove(soundFile);
 
             // removes associated item from the hash map
-            soundFilesMap.remove(soundFile.getSoundName());
+            soundFilesMap.getMap().remove(soundFile.getSoundName());
         }
     }
 
     // closes current window
-    @FXML protected void handleReturnButtonAction(ActionEvent e) {
-        Stage stage = (Stage) returnButton.getScene().getWindow();
-        stage.close();
+    @FXML protected void handleReturnButtonAction(ActionEvent event) {
+        try {
+            //main.setImportedSoundsForKeymixApp(soundFilesMap);
+
+            // sets up and displays KeymixAppController window
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("app.fxml"));
+            Parent root = fxmlLoader.load();
+
+            KeymixAppController managerController = fxmlLoader.<KeymixAppController> getController();
+            managerController.setImportedSounds(soundFilesMap.getMap());
+
+            // sets up scene and shows it
+            Scene scene = new Scene(root, 640, 400);
+            scene.getStylesheets().add(Main.class.getResource("app.css").toExternalForm());
+
+            // sets up stage and shows it
+            Stage stage = new Stage();
+            stage.setTitle("keymix.");
+            stage.setScene(scene);
+            stage.show();
+
+            // closes current window
+            Stage currStage = (Stage) returnButton.getScene().getWindow();
+            currStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     public HashMap<String, String> getSoundFilesMap() {
-        return soundFilesMap;
+        return soundFilesMap.getMap();
     }
 
-    // add a sound file to SoundManager window
-    private void addSoundFile(String name, String path) {
-        // adds fileList to soundFiles with file name as key, full path as value
-        soundFilesMap.put(name, path);
+    public void setSoundFilesMap(HashMap<String, String> hm) {
+        this.soundFilesMap.setMap(hm);
+    }
 
-        // adds new SoundFileWithName
-        soundFilesTabData.add(new SoundFileWithName(name, path));
+    public void setParentController(KeymixAppController c) {
+        this.parentController = c;
     }
 
     // displays an error alert dialog to the user
