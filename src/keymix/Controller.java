@@ -60,7 +60,7 @@ public class Controller {
         List<File> files = fileChooser.showOpenMultipleDialog(message.getScene().getWindow());
         if(files != null) {
             importedSounds.addAll(files);
-            message.setText(files.size() + " files were added.");
+            message.setText(files.size() + " file(s) were added.");
         } else {
 
         }
@@ -74,8 +74,10 @@ public class Controller {
 
         Optional<File> result = dialog.showAndWait();
         result.ifPresent(file -> {
-            importedSounds.remove(file);
-            message.setText(file.getName() + " was removed.");
+            if (!file.toString().equals(DEFAULT_OPTION)) {
+                importedSounds.remove(file);
+                message.setText(file.getName() + " was removed.");
+            }
         });
 
         event.consume();
