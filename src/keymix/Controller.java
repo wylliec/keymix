@@ -15,22 +15,22 @@ import java.util.*;
 
 public class Controller {
     private Set<File> importedSounds = new TreeSet<>();
-    private Map<KeyCode, AudioClip>[] maps = (Map<KeyCode, AudioClip>[]) new Object[10];
+    private Map<KeyCode, AudioClip>[] maps = new Map[10];
     private int myMap = 0;
 
     @FXML private Button importFile;
 
     @FXML protected void keyPress(KeyEvent keyEvent) {
         String id = keyEvent.getText().toUpperCase();
+
+        if (maps[myMap] != null && keyEvent.getCode() == KeyCode.BACK_SPACE) {
+            maps[myMap].values().stream().forEach(clip -> clip.stop());
+        }
+
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
                 && maps[myMap].containsKey(keyEvent.getCode())) {
             importFile.getScene().lookup("#" + id).getStyleClass().add("pressed");
             maps[myMap].get(keyEvent.getCode()).play();
-
-            if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
-                maps[myMap].values().stream().forEach(clip -> clip.stop());
-            }
-
         }
         keyEvent.consume();
     }
@@ -51,7 +51,9 @@ public class Controller {
         fileChooser.getExtensionFilters().add(extFilter);
 
         List<File> files = fileChooser.showOpenMultipleDialog(importFile.getScene().getWindow());
-        importedSounds.addAll(files);
+        if(files != null) {
+            importedSounds.addAll(files);
+        }
     }
 
     @FXML protected void removeFiles(ActionEvent event) {
