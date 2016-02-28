@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="keymix.KeymixAppController">
   <AnchorPane maxHeight="-1.0" maxWidth="-1.0" onKeyPressed="#keyPress" onKeyReleased="#keyRelease" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
     <VBox layoutX="14.0" layoutY="14.0" prefHeight="372.0" prefWidth="612.0" spacing="3.0">
-      <VBox prefHeight="170.0" prefWidth="612.0">
-        <Label id="title" prefWidth="612.0" text="keymix.">
-          <font>
-            <Font size="36.0" />
-          </font>
-        </Label>
-        <Label id="phrase" text="get on board">
-          <font>
-            <Font size="20.0" />
-          </font>
-        </Label>
-      </VBox>
+      <HBox spacing="10">
+        <ImageView fx:id="logo" fitHeight="100.0" fitWidth="100.0">
+          <image>
+            <Image url="@km.gif" />
+          </image>
+        </ImageView>
+        <VBox prefHeight="170.0" prefWidth="612.0">
+          <Label id="title" prefWidth="612.0" text="keymix.">
+            <font>
+              <Font name="HP Simplified Bold" size="36.0" />
+            </font>
+          </Label>
+          <Label id="phrase" text="get on board">
+            <font>
+              <Font name="HP Simplified" size="20.0" />
+            </font>
+          </Label>
+        </VBox>
+      </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
         <Button id="`" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="`" />
         <HBox prefHeight="-1.0" prefWidth="-1.0" spacing="3.0" styleClass="num">
@@ -69,7 +77,7 @@
         <Button id="enter" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="enter" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
-        <Button id="shift" mnemonicParsing="false" prefHeight="40.0" prefWidth="104.0" text="shift" />
+        <Button id="lshift" mnemonicParsing="false" prefHeight="40.0" prefWidth="104.0" text="shift" />
         <Button id="Z" mnemonicParsing="false" onAction="#clickLetter" prefHeight="40.0" prefWidth="40.0" text="Z" />
         <Button id="X" mnemonicParsing="false" onAction="#clickLetter" prefHeight="40.0" prefWidth="40.0" text="X" />
         <Button id="C" mnemonicParsing="false" onAction="#clickLetter" prefHeight="40.0" prefWidth="40.0" text="C" />
@@ -80,18 +88,18 @@
         <Button id="," mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="," />
         <Button id="." mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="." />
         <Button id="/" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="/" />
-        <Button id="shift" mnemonicParsing="false" prefHeight="40.0" prefWidth="94.0" text="shift" />
+        <Button id="rshift" mnemonicParsing="false" prefHeight="40.0" prefWidth="94.0" text="shift" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
-        <Button id="ctrl" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" />
-        <Button id="alt" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" />
+        <Button id="lctrl" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" />
+        <Button id="lalt" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" />
         <Button id="" mnemonicParsing="false" prefHeight="38.0" prefWidth="278.0" text="" />
-        <Button id="alt" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" />
-        <Button id="ctrl" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" />
-        <Button id="&lt;" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&lt;" />
-        <Button id="^" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="^" />
-        <Button id="v" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="v" />
-        <Button id="&gt;" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&gt;" />
+        <Button id="ralt" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" />
+        <Button id="rctrl" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" />
+        <Button id="left" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="◀" />
+        <Button id="up" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="▲" />
+        <Button id="down" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="▼" />
+        <Button id="right" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="▶" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
           <Text fx:id="message" disable="true" focusTraversable="false" HBox.hgrow="NEVER" />
