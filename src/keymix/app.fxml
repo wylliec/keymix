@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-  <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+<VBox prefHeight="400.0" prefWidth="640.0" fx:controller="keymix.Controller" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" onKeyPressed="#keyPress" onKeyReleased="#keyRelease">
     <VBox layoutX="14.0" layoutY="14.0" prefHeight="372.0" prefWidth="612.0" spacing="3.0">
       <VBox prefHeight="170.0" prefWidth="612.0">
         <Label id="title" prefWidth="612.0" text="keymix.">
@@ -25,60 +21,60 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
         <Button id="`" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="`" />
-        <Button id="1" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="1" />
-        <Button id="2" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="2" />
-        <Button id="3" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="3" />
-        <Button id="4" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="4" />
-        <Button id="5" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="5" />
-        <Button id="6" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="6" />
-        <Button id="7" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="7" />
-        <Button id="8" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="8" />
-        <Button id="9" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="9" />
-        <Button id="0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="0" />
+        <Button id="1" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="1" onAction="#clickNumber" />
+        <Button id="2" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="2" onAction="#clickNumber" />
+        <Button id="3" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="3" onAction="#clickNumber" />
+        <Button id="4" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="4" onAction="#clickNumber" />
+        <Button id="5" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="5" onAction="#clickNumber" />
+        <Button id="6" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="6" onAction="#clickNumber" />
+        <Button id="7" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="7" onAction="#clickNumber" />
+        <Button id="8" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="8" onAction="#clickNumber" />
+        <Button id="9" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="9" onAction="#clickNumber" />
+        <Button id="0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="0" onAction="#clickNumber" />
         <Button id="-" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" />
         <Button id="=" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="=" />
         <Button id="backspace" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="backspace" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
         <Button id="tab" mnemonicParsing="false" prefHeight="36.0" prefWidth="65.0" text="tab" />
-        <Button id="Q" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Q" />
-        <Button id="W" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="W" />
-        <Button id="E" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="E" />
-        <Button id="R" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="R" />
-        <Button id="T" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="T" />
-        <Button id="Y" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Y" />
-        <Button id="U" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="U" />
-        <Button id="I" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="I" />
-        <Button id="O" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="O" />
-        <Button id="P" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="P" />
+        <Button id="Q" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Q" onAction="#clickLetter" />
+        <Button id="W" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="W" onAction="#clickLetter" />
+        <Button id="E" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="E" onAction="#clickLetter" />
+        <Button id="R" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="R" onAction="#clickLetter" />
+        <Button id="T" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="T" onAction="#clickLetter" />
+        <Button id="Y" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Y" onAction="#clickLetter" />
+        <Button id="U" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="U" onAction="#clickLetter" />
+        <Button id="I" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="I" onAction="#clickLetter" />
+        <Button id="O" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="O" onAction="#clickLetter" />
+        <Button id="P" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="P" onAction="#clickLetter" />
         <Button id="[" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="[" />
         <Button id="]" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="]" />
         <Button id="\\" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="\\" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
         <Button id="caps" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="caps" />
-        <Button id="A" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="A" />
-        <Button id="S" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="S" />
-        <Button id="D" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="D" />
-        <Button id="F" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="F" />
-        <Button id="G" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="G" />
-        <Button id="H" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="H" />
-        <Button id="J" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="J" />
-        <Button id="K" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="K" />
-        <Button id="L" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="L" />
+        <Button id="A" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="A" onAction="#clickLetter" />
+        <Button id="S" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="S" onAction="#clickLetter" />
+        <Button id="D" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="D" onAction="#clickLetter" />
+        <Button id="F" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="F" onAction="#clickLetter" />
+        <Button id="G" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="G" onAction="#clickLetter" />
+        <Button id="H" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="H" onAction="#clickLetter" />
+        <Button id="J" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="J" onAction="#clickLetter" />
+        <Button id="K" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="K" onAction="#clickLetter" />
+        <Button id="L" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="L" onAction="#clickLetter" />
         <Button id=";" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text=";" />
         <Button id="'" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="'" />
         <Button id="enter" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="enter" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
         <Button id="shift" mnemonicParsing="false" prefHeight="40.0" prefWidth="104.0" text="shift" />
-        <Button id="Z" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Z" />
-        <Button id="X" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="X" />
-        <Button id="C" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="C" />
-        <Button id="V" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="V" />
-        <Button id="B" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="B" />
-        <Button id="N" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="N" />
-        <Button id="M" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="M" />
+        <Button id="Z" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Z" onAction="#clickLetter" />
+        <Button id="X" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="X" onAction="#clickLetter" />
+        <Button id="C" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="C" onAction="#clickLetter" />
+        <Button id="V" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="V" onAction="#clickLetter" />
+        <Button id="B" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="B" onAction="#clickLetter" />
+        <Button id="N" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="N" onAction="#clickLetter" />
+        <Button id="M" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="M" onAction="#clickLetter" />
         <Button id="," mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="," />
         <Button id="." mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="." />
         <Button id="/" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="/" />
@@ -97,7 +93,7 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10">
-        <Button mnemonicParsing="false" text="Sound Manager" />
+        <Button mnemonicParsing="false" text="Sound Manager" fx:id="importFile" onAction="#importFiles"/>
         <Button mnemonicParsing="false" text="Map Manager" />
       </HBox>
     </VBox>

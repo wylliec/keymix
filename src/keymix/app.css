@@ -38,5 +38,6 @@ root {
 }
 
 .button:pressed, .button.pressed {
-    -fx-background-color: linear-gradient(#003262, #3B7EA1);
+    /*-fx-background-color: linear-gradient(#003262, #3B7EA1);*/
+    -fx-background-color: green;
 }
