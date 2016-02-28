@@ -20,6 +20,7 @@ public class Main extends Application {
 
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("km.gif")));
         primaryStage.setResizable(false);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
