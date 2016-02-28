@@ -28,11 +28,14 @@ public class Controller {
             switchMap(Integer.parseInt(id));
         } catch(NumberFormatException nfe) { }
 
-        if (maps[myMap] != null && (keyEvent.getCode() == KeyCode.BACK_SPACE ||
-                keyEvent.getCode() == KeyCode.SPACE)) {
-            maps[myMap].values().stream().forEach(sample -> sample.getClip().stop());
+        if(keyEvent.getCode() == KeyCode.BACK_SPACE || keyEvent.getCode() == KeyCode.SPACE){
+            for(Map<KeyCode, Sample> m : maps) {
+                if (m != null) {
+                    m.values().stream().forEach(sample -> sample.getClip().stop());
+                    message.setText("Stopping playback.");
+                }
+            }
         }
-
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
                 && maps[myMap].containsKey(keyEvent.getCode()) && !maps[myMap].get(keyEvent.getCode()).isPlaying()) {
             maps[myMap].get(keyEvent.getCode()).setPlaying(true);
