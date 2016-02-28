@@ -45,17 +45,17 @@
               <children>
                 <AnchorPane prefHeight="32.0" prefWidth="604.0">
                   <children>
-                    <Button fx:id="btnDeleteSelected" layoutX="28.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleDeleteSelectedButtonAction" text="delete selected" textAlignment="CENTER">
+                    <Button id="btnDeleteSelected" fx:id="deleteSelectedButton" layoutX="28.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleDeleteSelectedButtonAction" text="delete selected" textAlignment="CENTER">
                       <font>
                         <Font size="14.0" fx:id="x2" />
                       </font>
                     </Button>
-                    <Button fx:id="btnLoadSounds" layoutX="252.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleLoadSoundsButtonAction" prefWidth="108.0" text="load sounds" textAlignment="CENTER">
+                    <Button id="btnLoadSounds" fx:id="loadSoundsButton" layoutX="260.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleLoadSoundsButtonAction" prefWidth="108.0" text="load sounds" textAlignment="CENTER">
                       <font>
                         <Font name="System Bold" size="14.0" />
                       </font>
                     </Button>
-                    <Button fx:id="btnReturn" font="$x2" layoutX="500.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleReturnButtonAction" text="return" textAlignment="CENTER" />
+                    <Button id="btnReturn" fx:id="returnButton" font="$x2" layoutX="508.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleReturnButtonAction" text="close" textAlignment="CENTER" />
                   </children>
                   <HBox.margin>
                     <Insets top="5.0" fx:id="x1" />
