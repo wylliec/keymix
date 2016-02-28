@@ -6,11 +6,8 @@ import javafx.scene.text.Text;
 
 public class Controller {
 
-    /*xz
-
-     */
     public Controller() {
 
     }
-
+    
 }
