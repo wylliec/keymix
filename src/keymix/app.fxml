@@ -93,8 +93,8 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10">
-        <Button mnemonicParsing="false" text="Sound Manager" fx:id="importFile" onAction="#importFiles"/>
-        <Button mnemonicParsing="false" text="Map Manager" />
+        <Button mnemonicParsing="false" text="Import Samples" fx:id="importFile" onAction="#importFiles"/>
+        <Button mnemonicParsing="false" text="Remove Samples" onAction="#removeFiles" />
       </HBox>
     </VBox>
   </AnchorPane>

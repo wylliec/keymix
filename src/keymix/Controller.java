@@ -12,35 +12,25 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Controller {
     private Set<File> importedSounds = new TreeSet<>();
-    private Map<KeyCode, AudioClip>[] maps = new Map[10];
+    private Map<KeyCode, AudioClip>[] maps = (Map<KeyCode, AudioClip>[]) new Object[10];
     private int myMap = 0;
 
     @FXML private Button importFile;
 
     @FXML protected void keyPress(KeyEvent keyEvent) {
-//        System.out.println("property: " + ((Node)keyEvent.getTarget()).idProperty().getValue());
-//        System.out.println("getText: " + keyEvent.getText());
-//        System.out.println("getCharacter: " + keyEvent.getCharacter());
         String id = keyEvent.getText().toUpperCase();
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
                 && maps[myMap].containsKey(keyEvent.getCode())) {
             importFile.getScene().lookup("#" + id).getStyleClass().add("pressed");
-            // System.out.println(maps[myMap]);
             maps[myMap].get(keyEvent.getCode()).play();
-            /*
+
             if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
-                sample1.stop();
-                sample2.stop();
-                sample3.stop();
-                sample4.stop();
-                sample5.stop();
-                keyEvent.consume();
+                maps[myMap].values().stream().forEach(clip -> clip.stop());
             }
-            */
+
         }
         keyEvent.consume();
     }
@@ -64,32 +54,42 @@ public class Controller {
         importedSounds.addAll(files);
     }
 
+    @FXML protected void removeFiles(ActionEvent event) {
+        ChoiceDialog<File> dialog = new ChoiceDialog<>(new File("Select an option."), importedSounds);
+        dialog.setTitle("Delete Sample");
+        dialog.setHeaderText("Choose what sample you would like delete");
+        dialog.setContentText("Sample:");
+
+        Optional<File> result = dialog.showAndWait();
+        result.ifPresent(file -> importedSounds.remove(file));
+
+        event.consume();
+    }
+
     @FXML protected void clickLetter(ActionEvent event) {
         String id = ((Node)event.getTarget()).idProperty().getValue();
-        event.consume();
 
-        Collection<String> collected = importedSounds.stream().map(file -> file.toURI().toString()).collect(Collectors.toList());;
-
-        ChoiceDialog<String> dialog = new ChoiceDialog<>("Select an option.", collected);
-        dialog.setTitle("Choose your sample");
+        ChoiceDialog<File> dialog = new ChoiceDialog<>(new File("Select an option."), importedSounds);
+        dialog.setTitle("Choose Sample");
         dialog.setHeaderText("Choose what sample you would like to map to letter " + id);
         dialog.setContentText("Sample:");
 
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(str -> this.mapKey(str, id));
+        Optional<File> result = dialog.showAndWait();
+        result.ifPresent(file -> this.mapKey(file, id));
+
+        event.consume();
     }
 
     @FXML protected void clickNumber(ActionEvent event) {
         String id = ((Node)event.getTarget()).idProperty().getValue();
-        int num = id.charAt(0) - '0';
-        myMap = num;
+        myMap = id.charAt(0) - '0';
         event.consume();
     }
 
-    private void mapKey(String URL, String id) {
+    private void mapKey(File file, String id) {
         if(maps[myMap] == null) {
-            maps[myMap] = new HashMap<KeyCode, AudioClip>();
+            maps[myMap] = new HashMap<>();
         }
-        maps[myMap].put(KeyCode.valueOf(id), new AudioClip(URL));
+        maps[myMap].put(KeyCode.valueOf(id), new AudioClip(file.toURI().toString()));
     }
 }
