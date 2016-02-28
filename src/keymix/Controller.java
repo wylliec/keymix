@@ -64,7 +64,7 @@ public class Controller {
     @FXML protected void removeFiles(ActionEvent event) {
         ChoiceDialog<File> dialog = new ChoiceDialog<>(new File(DEFAULT_OPTION), importedSounds);
         dialog.setTitle("Delete Sample");
-        dialog.setHeaderText("Choose what sample you would like delete");
+        dialog.setHeaderText("Choose what sample you would like to delete");
         dialog.setContentText("Sample:");
 
         Optional<File> result = dialog.showAndWait();
