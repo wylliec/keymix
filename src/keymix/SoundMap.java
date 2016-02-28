@@ -7,7 +7,7 @@ import java.io.File;
 /**
  * HashMap to map keycodes to the corresponding sound they should produce.
  */
-public class SoundMap {
+public class SoundMap extends MapOptimization {
 
     /* Maps keycodes to string containing the file name of the sound byte. */
     HashMap<KeyCode, String> sounds = new HashMap<KeyCode, String>();
@@ -31,10 +31,17 @@ public class SoundMap {
         return f.getName();
     }
 
+    /* Combines array of KeyCodes and array of filepaths into one HashMap. */
     public static HashMap<KeyCode, String> map(KeyCode[] c, String[] fp, HashMap<KeyCode, String> m) {
         for(int i = 0; i < c.length; i += 1) {
             m.put(c[i], name(fp[i]));
         }
         return m;
+    }
+
+    /* Allows for optimization of HashMap - key binding and name re-assignment. */
+    public void optimize() {
+        sounds = assignHotKey();
+        assignName();
     }
 }
