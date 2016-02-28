@@ -25,41 +25,41 @@ public class Play extends Application{
     public void start(Stage primaryStage){
         primaryStage.setTitle("Play!");
 
-        AudioClip kick1 = new AudioClip(new File("samples\\AnantSahai.wav").toURI().toString());
-        AudioClip kick2 = new AudioClip(new File("samples\\EECSforLifeYO.wav").toURI().toString());
-        AudioClip kick3 = new AudioClip(new File("samples\\ImBetterThanYou.wav").toURI().toString());
-        AudioClip kick4 = new AudioClip(new File("samples\\PaulHilfinger.wav").toURI().toString());
-        AudioClip kick5 = new AudioClip(new File("samples\\SixFigsRespeck.wav").toURI().toString());
+        AudioClip sample1 = new AudioClip(new File("samples\\AnantSahai.wav").toURI().toString());
+        AudioClip sample2 = new AudioClip(new File("samples\\EECSforLifeYO.wav").toURI().toString());
+        AudioClip sample3 = new AudioClip(new File("samples\\ImBetterThanYou.wav").toURI().toString());
+        AudioClip sample4 = new AudioClip(new File("samples\\PaulHilfinger.wav").toURI().toString());
+        AudioClip sample5 = new AudioClip(new File("samples\\SixFigsRespeck.wav").toURI().toString());
 
         TextArea txt = new TextArea();
         txt.setWrapText(true);
         txt.setOnKeyPressed((keyEvent) -> {
             if (keyEvent.getCode() == KeyCode.Z) {
-                kick1.play();
+                sample1.play();
                 keyEvent.consume();
             }
             if (keyEvent.getCode() == KeyCode.X) {
-                kick2.play();
+                sample2.play();
                 keyEvent.consume();
             }
             if (keyEvent.getCode() == KeyCode.C) {
-                kick3.play();
+                sample3.play();
                 keyEvent.consume();
             }
             if (keyEvent.getCode() == KeyCode.V) {
-                kick4.play();
+                sample4.play();
                 keyEvent.consume();
             }
             if (keyEvent.getCode() == KeyCode.B) {
-                kick5.play();
+                sample5.play();
                 keyEvent.consume();
             }
             if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
-                kick1.stop();
-                kick2.stop();
-                kick3.stop();
-                kick4.stop();
-                kick5.stop();
+                sample1.stop();
+                sample2.stop();
+                sample3.stop();
+                sample4.stop();
+                sample5.stop();
                 keyEvent.consume();
             }
         });

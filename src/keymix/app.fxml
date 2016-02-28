@@ -24,76 +24,76 @@
                 </Label>
             </VBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="`" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="1" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="2" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="3" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="4" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="5" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="6" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="7" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="8" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="9" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="0" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="=" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="backspace" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="`" id="`" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="1" id="1" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="2" id="2" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="3" id="3" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="4" id="4" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="5" id="5" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="6" id="6" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="7" id="7" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="8" id="8" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="9" id="9" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="0" id="0" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" id="-" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="=" id="=" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="backspace" id="backspace" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
-                <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="65.0" text="tab" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Q" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="W" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="E" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="R" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="T" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Y" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="U" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="I" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="O" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="P" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="[" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="]" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="\\" />
+                <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="65.0" text="tab" id="tab" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Q" id="Q" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="W" id="W" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="E" id="E" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="R" id="R" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="T" id="T" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Y" id="Y" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="U" id="U" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="I" id="I" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="O" id="O" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="P" id="P" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="[" id="[" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="]" id="]" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="\\" id="\\" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="caps" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="A" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="S" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="D" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="F" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="G" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="H" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="J" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="K" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="L" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text=";" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="'" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="enter" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="caps" id="caps" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="A" id="A" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="S" id="S" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="D" id="D" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="F" id="F" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="G" id="G" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="H" id="H" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="J" id="J" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="K" id="K" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="L" id="L" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text=";" id=";" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="'" id="'" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="enter" id="enter" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="104.0" text="shift" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Z" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="X" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="C" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="V" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="B" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="N" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="M" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="," />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="." />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="/" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="94.0" text="shift" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="104.0" text="shift" id="shift" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="Z" id="Z" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="X" id="X" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="C" id="C" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="V" id="V" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="B" id="B" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="N" id="N" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="M" id="M" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="," id="," />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="." id="." />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="/" id="/" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="94.0" text="shift" id="shift" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" />
-                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="277.9999000000025" text="" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&lt;" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="^" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="v" />
-                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&gt;" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" id="ctrl" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" id="alt" />
+                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="278.0" text="" id="" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="alt" id="alt" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="ctrl" id="ctrl" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&lt;" id="&lt;" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="^" id="^" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="v" id="v" />
+                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&gt;" id="&gt;" />
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" />
             <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
