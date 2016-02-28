@@ -21,16 +21,18 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0">
         <Button id="`" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="`" />
-        <Button id="1" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="1" />
-        <Button id="2" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="2" />
-        <Button id="3" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="3" />
-        <Button id="4" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="4" />
-        <Button id="5" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="5" />
-        <Button id="6" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="6" />
-        <Button id="7" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="7" />
-        <Button id="8" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="8" />
-        <Button id="9" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="9" />
-        <Button id="0" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" styleClass="pressed" text="0" />
+        <HBox prefHeight="-1.0" prefWidth="-1.0" spacing="3.0" styleClass="num">
+          <Button id="1" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="1" />
+          <Button id="2" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="2" />
+          <Button id="3" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="3" />
+          <Button id="4" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="4" />
+          <Button id="5" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="5" />
+          <Button id="6" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="6" />
+          <Button id="7" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="7" />
+          <Button id="8" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="8" />
+          <Button id="9" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" text="9" />
+          <Button id="0" mnemonicParsing="false" onAction="#clickNumber" prefHeight="40.0" prefWidth="40.0" styleClass="pressed" text="0" />
+        </HBox>
         <Button id="-" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" />
         <Button id="=" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="=" />
         <Button id="backspace" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="STOP" />
@@ -92,7 +94,7 @@
         <Button id="&gt;" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="&gt;" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-        <Text fx:id="message" />
+          <Text fx:id="message" disable="true" focusTraversable="false" HBox.hgrow="NEVER" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
         <Button fx:id="openSoundManagerButton" mnemonicParsing="false" onAction="#openSoundManager" text="Open Sound Manager" />

@@ -3,7 +3,6 @@ package keymix;
 import javafx.scene.media.AudioClip;
 
 import java.io.IOException;
-import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 /**
@@ -44,7 +43,6 @@ public class Sample implements Serializable{
         Sample sample = (Sample) o;
 
         return URI.equals(sample.URI);
-
     }
 
     @Override

@@ -3,7 +3,6 @@ package keymix;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -26,12 +25,7 @@ public class Controller {
         String id = keyEvent.getText().toUpperCase();
 
         try {
-            int mapNum = Integer.parseInt(id);
-            if(mapNum >=0 && mapNum < 10) {
-                message.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
-                myMap = mapNum;
-                message.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
-            }
+            switchMap(Integer.parseInt(id));
         } catch(NumberFormatException nfe) { }
 
         if (maps[myMap] != null && (keyEvent.getCode() == KeyCode.BACK_SPACE ||
@@ -49,9 +43,7 @@ public class Controller {
     }
 
     @FXML protected void keyRelease(KeyEvent keyEvent) {
-        //String id = keyEvent.getText();
         String id = keyEvent.getText().toUpperCase();
-        //System.out.println(id);
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
                 && maps[myMap].containsKey(keyEvent.getCode())) {
             maps[myMap].get(keyEvent.getCode()).setPlaying(false);
@@ -68,6 +60,9 @@ public class Controller {
         List<File> files = fileChooser.showOpenMultipleDialog(message.getScene().getWindow());
         if(files != null) {
             importedSounds.addAll(files);
+            message.setText(files.size() + " file(s) were added.");
+        } else {
+
         }
     }
 
@@ -78,16 +73,19 @@ public class Controller {
         dialog.setContentText("Sample:");
 
         Optional<File> result = dialog.showAndWait();
-        result.ifPresent(file -> importedSounds.remove(file));
+        result.ifPresent(file -> {
+            if (!file.toString().equals(DEFAULT_OPTION)) {
+                importedSounds.remove(file);
+                message.setText(file.getName() + " was removed.");
+            }
+        });
 
         event.consume();
     }
 
     @FXML protected void clickNumber(ActionEvent event) {
-        message.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
         String id = ((Node)event.getTarget()).idProperty().getValue();
-        myMap = id.charAt(0) - '0';
-        message.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
+        switchMap(id.charAt(0) - '0');
         event.consume();
     }
 
@@ -111,10 +109,36 @@ public class Controller {
                 maps[myMap] = new HashMap<>();
             }
             maps[myMap].put(KeyCode.valueOf(id), new Sample(file.toURI().toString()));
+            message.getScene().lookup("#" + id).getStyleClass().add("mapped");
+            message.setText(id + " key mapped to " + file.getName() + ".");
         } else {
             if (maps[myMap] != null) {
                 maps[myMap].remove(KeyCode.valueOf(id));
+                message.getScene().lookup("#" + id).getStyleClass().remove("mapped");
+                message.setText(id + " key unmapped.");
             }
+        }
+    }
+
+    private void switchMap(int newMap) {
+        if(newMap != myMap) {
+            if(maps[myMap] != null) {
+                for (KeyCode k : maps[myMap].keySet()) {
+                    message.getScene().lookup("#" + k.getName()).getStyleClass().remove("mapped");
+                }
+            }
+            message.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
+
+            myMap = newMap;
+
+            if(maps[myMap] != null) {
+                for (KeyCode k : maps[myMap].keySet()) {
+                    message.getScene().lookup("#" + k.getName()).getStyleClass().add("mapped");
+                }
+            }
+            message.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
+
+            message.setText("Switched to map #" + myMap + ".");
         }
     }
 
@@ -143,6 +167,11 @@ public class Controller {
             File file = new File("keymap.ser");
             FileInputStream f = new FileInputStream(file);
             ObjectInputStream s = new ObjectInputStream(f);
+            if(maps[myMap] != null) {
+                for (KeyCode k : maps[myMap].keySet()) {
+                    message.getScene().lookup("#" + k.getName()).getStyleClass().remove("mapped");
+                }
+            }
             maps = new Map[10];
             for (int i = 0; i < maps.length; i++) {
                 maps[i] = (HashMap<KeyCode, Sample>) s.readObject();
@@ -150,6 +179,12 @@ public class Controller {
             importedSounds = (TreeSet) s.readObject();
             s.close();
             f.close();
+
+            if(maps[myMap] != null) {
+                for (KeyCode k : maps[myMap].keySet()) {
+                    message.getScene().lookup("#" + k.getName()).getStyleClass().add("mapped");
+                }
+            }
             message.setText("Keymap loaded.");
         } catch (IOException|ClassNotFoundException err) {
             message.setText("Could not load keymap.");
