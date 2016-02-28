@@ -19,6 +19,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         scene.getStylesheets().add(Main.class.getResource("app.css").toExternalForm());
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("km.gif")));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

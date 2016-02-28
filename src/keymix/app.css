@@ -14,13 +14,13 @@ root {
 }
 
 #title {
-    -fx-font-size: 36px;
+    -fx-font-size: 48px;
     -fx-font-weight: bold;
     -fx-fill: #818181;
 }
 
 #phrase {
-    -fx-font-size: 24px;
+    -fx-font-size: 20px;
     -fx-font-weight: normal;
     -fx-fill: #818181;
 }
