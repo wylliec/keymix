@@ -95,6 +95,8 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10">
         <Button mnemonicParsing="false" text="Import Samples" fx:id="importFile" onAction="#importFiles"/>
         <Button mnemonicParsing="false" text="Remove Samples" onAction="#removeFiles" />
+        <Button mnemonicParsing="false" text="Save Keymap" onAction="#saveKeymap" />
+        <Button mnemonicParsing="false" text="Import Keymap" onAction="#importKeymap" />
       </HBox>
     </VBox>
   </AnchorPane>

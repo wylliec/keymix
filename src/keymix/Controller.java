@@ -11,11 +11,14 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class Controller {
     private Set<File> importedSounds = new TreeSet<>();
     private Map<KeyCode, AudioClip>[] maps = new Map[10];
+    private boolean[] presses = new boolean[26];
     private int myMap = 0;
 
     @FXML private Button importFile;
@@ -23,12 +26,14 @@ public class Controller {
     @FXML protected void keyPress(KeyEvent keyEvent) {
         String id = keyEvent.getText().toUpperCase();
 
-        if (maps[myMap] != null && keyEvent.getCode() == KeyCode.BACK_SPACE) {
+        if (maps[myMap] != null && (keyEvent.getCode() == KeyCode.BACK_SPACE ||
+                keyEvent.getCode() == KeyCode.SPACE)) {
             maps[myMap].values().stream().forEach(clip -> clip.stop());
         }
 
         if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
-                && maps[myMap].containsKey(keyEvent.getCode())) {
+                && maps[myMap].containsKey(keyEvent.getCode()) && !presses[id.charAt(0) - 'A']) {
+            presses[id.charAt(0) - 'A'] = true;
             importFile.getScene().lookup("#" + id).getStyleClass().add("pressed");
             maps[myMap].get(keyEvent.getCode()).play();
         }
@@ -39,7 +44,9 @@ public class Controller {
         //String id = keyEvent.getText();
         String id = keyEvent.getText().toUpperCase();
         //System.out.println(id);
-        if(maps[myMap] != null) {
+        if(maps[myMap] != null && id.length() == 1 && Character.isLetter(id.charAt(0))
+                && maps[myMap].containsKey(keyEvent.getCode())) {
+            presses[id.charAt(0) - 'A'] = false;
             importFile.getScene().lookup("#" + id).getStyleClass().remove("pressed");
         }
         keyEvent.consume();
@@ -68,6 +75,12 @@ public class Controller {
         event.consume();
     }
 
+    @FXML protected void clickNumber(ActionEvent event) {
+        String id = ((Node)event.getTarget()).idProperty().getValue();
+        myMap = id.charAt(0) - '0';
+        event.consume();
+    }
+
     @FXML protected void clickLetter(ActionEvent event) {
         String id = ((Node)event.getTarget()).idProperty().getValue();
 
@@ -82,16 +95,25 @@ public class Controller {
         event.consume();
     }
 
-    @FXML protected void clickNumber(ActionEvent event) {
-        String id = ((Node)event.getTarget()).idProperty().getValue();
-        myMap = id.charAt(0) - '0';
-        event.consume();
-    }
-
     private void mapKey(File file, String id) {
         if(maps[myMap] == null) {
             maps[myMap] = new HashMap<>();
         }
         maps[myMap].put(KeyCode.valueOf(id), new AudioClip(file.toURI().toString()));
+    }
+
+    @FXML protected void saveKeymap(ActionEvent event) {
+//        File file = new File("temp");
+//        FileOutputStream f = new FileOutputStream(file);
+//        ObjectOutputStream s = new ObjectOutputStream(f);
+//        s.writeObject(fileObj);
+//        s.close();
+
+        event.consume();
+    }
+
+    @FXML protected void importKeymap(ActionEvent event) {
+
+        event.consume();
     }
 }
