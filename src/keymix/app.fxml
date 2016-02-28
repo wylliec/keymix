@@ -30,7 +30,7 @@
         <Button id="7" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="7" onAction="#clickNumber" />
         <Button id="8" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="8" onAction="#clickNumber" />
         <Button id="9" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="9" onAction="#clickNumber" />
-        <Button id="0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="0" onAction="#clickNumber" />
+        <Button id="0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="0" onAction="#clickNumber" styleClass="pressed"/>
         <Button id="-" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="-" />
         <Button id="=" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="=" />
         <Button id="backspace" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" text="STOP" />

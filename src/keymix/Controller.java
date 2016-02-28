@@ -24,6 +24,15 @@ public class Controller {
     @FXML protected void keyPress(KeyEvent keyEvent) {
         String id = keyEvent.getText().toUpperCase();
 
+        try {
+            int mapNum = Integer.parseInt(id);
+            if(mapNum >=0 && mapNum < 10) {
+                importFile.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
+                myMap = mapNum;
+                importFile.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
+            }
+        } catch(NumberFormatException nfe) { }
+
         if (maps[myMap] != null && (keyEvent.getCode() == KeyCode.BACK_SPACE ||
                 keyEvent.getCode() == KeyCode.SPACE)) {
             maps[myMap].values().stream().forEach(sample -> sample.getClip().stop());
@@ -74,8 +83,10 @@ public class Controller {
     }
 
     @FXML protected void clickNumber(ActionEvent event) {
+        importFile.getScene().lookup("#" + myMap).getStyleClass().remove("pressed");
         String id = ((Node)event.getTarget()).idProperty().getValue();
         myMap = id.charAt(0) - '0';
+        importFile.getScene().lookup("#" + myMap).getStyleClass().add("pressed");
         event.consume();
     }
 
@@ -137,7 +148,7 @@ public class Controller {
             s.close();
             f.close();
         } catch (IOException err) {
-            err.printStackTrace();
+
         } catch (ClassNotFoundException err) {
             err.printStackTrace();
         }
