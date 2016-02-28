@@ -1,30 +1,12 @@
 package keymix;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.IOException;
 
 /**
  * Created by Jessie on 2/27/2016.
@@ -33,45 +15,54 @@ import java.util.List;
  *     - Allows user to upload and name sound files
  */
 public class SoundManager extends Application {
-    // list of sound files added by user for key mappings
-    LinkedList<File> soundFiles = new LinkedList<>();
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        Group root = new Group();
+    public void start(Stage primaryStage) throws IOException {
+        // loads FXML for SoundManager
+        Parent root = FXMLLoader.load(getClass().getResource("SoundManager.fxml"));
+        Scene scene = new Scene(root, 640, 400);
 
-        Button buttonLoad = new Button("Load");
-        buttonLoad.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent e) {
-                FileChooser fileChooser = new FileChooser();
-
-                // adds extension filters
-                fileChooser.getExtensionFilters().addAll(
-                        new FileChooser.ExtensionFilter("MP3 files (*.mp3)", "*.mp3"),
-                        new FileChooser.ExtensionFilter("MIDI files (*.midi)", "*.midi")
-                );
-
-                // lets user pick file(s)
-                List<File> fileList = fileChooser.showOpenMultipleDialog(primaryStage);
-
-                // adds fileList to soundFiles
-                soundFiles.addAll(fileList);
-
-                System.out.println(soundFiles);
-            }
-        });
-        VBox vBox = VBoxBuilder.create()
-                .children(buttonLoad)
-                .build();
-        root.getChildren().add(vBox);
-        primaryStage.setScene(new Scene(root, 640, 400));
+        // sets up and launches window
+        primaryStage.setTitle("keymix . sound manager");
+        primaryStage.setScene(scene);
         primaryStage.show();
 
+//        // OLD CODE FOR FILE PICKER, MOVED TO SoundManagerController.java
+//        // list of sound files added by user for key mappings
+//        private LinkedList<File> soundFiles = new LinkedList<>();
+//
+//        Group root = new Group();
+//
+//        Button btnLoadSounds = new Button("Load Sounds");
+//        btnLoadSounds.setOnAction((ActionEvent e) -> {
+//                FileChooser fileChooser = new FileChooser();
+//
+//                // adds extension filters
+//                fileChooser.getExtensionFilters().addAll(
+//                        new FileChooser.ExtensionFilter("MP3 files (*.mp3)", "*.mp3"),
+//                        new FileChooser.ExtensionFilter("MIDI files (*.midi)", "*.midi"),
+//                        new FileChooser.ExtensionFilter("WAV files (*.wav)", "*.wav")
+//                );
+//
+//                // lets user pick file(s)
+//                List<File> fileList = fileChooser.showOpenMultipleDialog(primaryStage);
+//
+//                if (fileList != null) {
+//                    // adds fileList to soundFiles
+//                    soundFiles.addAll(fileList);
+//                }
+//
+//                System.out.println(soundFiles);
+//        });
+//
+//        VBox vBox = new VBox();
+//        vBox.setAlignment(Pos.CENTER);
+//        vBox.getChildren().add(btnLoadSounds);
+//        root.getChildren().add(vBox);
 
 
 //        // OLD CODE FOR CUSTOM/BASIC FILE BROWSER
